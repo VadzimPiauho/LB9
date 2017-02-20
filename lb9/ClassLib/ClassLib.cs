@@ -1,27 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ClassLib
 {
-    public class ClassLib
+    [Serializable]
+    public class ClassLib 
     {
-        public string marka { get; set; }
-        public int Snumber { get; set; }
-        public bool power { get; set; }
+        public string marka
+        {
+            get;
+            set;
+        }
+        public int Snumber
+        {
+            get;
+            set;
+        }
+        public bool power
+        {
+            get;
+            set;
+        }
+        public ClassLib()
+        {
 
-        public ClassLib(string marka, int Snumber)
+        }
+
+        public ClassLib(string marka, int Snumber, bool power)
         {
             this.marka = marka;
             this.Snumber = Snumber;
             this.power = false;
-        }
-
-        public ClassLib()
-        {
-        }
+        }        
 
         public void PowerOnOff()
         {
@@ -50,6 +64,15 @@ namespace ClassLib
                 Console.WriteLine("ПК вкл");
             }
         }
-
+        //public ClassLib(SerializationInfo sInfo, StreamingContext contextArg)
+        //{
+        //    this.marka = (List<Student>)sInfo.GetValue("marka", typeof(List<Student>));
+        //    this.students = (List<Student>)sInfo.GetValue("Students", typeof(List<Student>));
+        //}
+        //public void GetObjectData(SerializationInfo info, StreamingContext context)
+        //{
+        //    info.AddValue("marka", this.marka);
+        //    info.AddValue("Snumber", this.Snumber);
+        //}
     }
 }

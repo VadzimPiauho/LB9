@@ -16,14 +16,18 @@ namespace DeserializConsolApp
             string dir = @"C:\Users\Vadzim_Pliauho\Desktop\LB9\lb9\lb9\bin\Debug";
             string serializationFile = Path.Combine(dir, "listSerial.txt");
             //deserialize
-            using (Stream stream = File.Open(serializationFile, FileMode.Open))
+            using (FileStream stream2 = new FileStream(serializationFile, FileMode.Open, FileAccess.Read))
             {
                 var bformatter = new BinaryFormatter();
 
-                List<ClassLib.ClassLib> pc = (List<ClassLib.ClassLib>)bformatter.Deserialize(stream);
+                //object obj = bformatter.Deserialize(stream);
+                //var objects = obj as List<object>;
+                
+                List<ClassLib.ClassLib> pc2 = (List<ClassLib.ClassLib>)bformatter.Deserialize(stream2);
                 Console.WriteLine();
                 Console.WriteLine("После deserialize");
-                foreach (ClassLib.ClassLib aPC in pc)
+                stream2.Close();
+                foreach (ClassLib.ClassLib aPC in pc2)
                 {
                     Console.WriteLine("Марка - {0} \t Серийный номер - {1}", aPC.marka, aPC.Snumber);
                 }
