@@ -29,9 +29,9 @@ namespace SerializConsolApp
 
             string dir = @"C:\Users\Vadzim_Pliauho\Desktop\LB9\lb9\lb9\bin\Debug";
             string serializationFile = Path.Combine(dir, "listSerial.txt");
+            Console.WriteLine(File.Exists(serializationFile) ? "File с таким именем уже существует и будет перезаписан." : "File с таким именем не найдено, будет создан новый файл");
             SaveBinaryFormat(serializationFile, pc);
             Console.ReadKey();
-
         }
 
         private static void SaveBinaryFormat(string fileName, object objGraph)
@@ -44,7 +44,7 @@ namespace SerializConsolApp
                 bformatter.Serialize(stream, objGraph);
                 stream.Close();
             }
-            Console.WriteLine("--> Сохранение объекта в Binary format");
+            Console.WriteLine("--> Сохранение объекта в Binary format в файл");
         }
     }
 }
